@@ -13,7 +13,7 @@ function checksPalindrome(string) {
     reversedString += formattedString[i];
   }
 
-  const result = formattedString === reversedString ? 'Это палиндром' : 'Это не палиндром';
+  const result = formattedString === reversedString;
   console.log(result);
   return(result);
 }
