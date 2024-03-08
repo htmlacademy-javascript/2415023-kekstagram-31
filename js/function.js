@@ -2,7 +2,7 @@
 function checkStringLength(str, maxLength) {
   return str.length <= maxLength;
 }
-console.log(checkStringLength('строка', 20));
+(checkStringLength('строка', 20));
 
 // палиндром
 function checksPalindrome(string) {
@@ -14,7 +14,6 @@ function checksPalindrome(string) {
   }
 
   const result = formattedString === reversedString;
-  console.log(result);
   return(result);
 }
 checksPalindrome('Лёша на полке клопа нашёл');
@@ -37,4 +36,4 @@ function separatesNumbers(input) {
   return parseInt(onlyNumbers, 10);
 }
 
-console.log(separatesNumbers('агент 0097'));
+(separatesNumbers('агент 0097'));
