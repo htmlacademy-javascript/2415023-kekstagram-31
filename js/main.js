@@ -1,6 +1,6 @@
 // Объявляем переменные
 // Посты
-const POSTS_NUMBER = 25;
+const POSTS_NUMBER = 30;
 
 const PHOTO_ID = {
   min: 1,
@@ -15,7 +15,7 @@ const DESCRIPTIONS = [
   'Мое ощущение от первого погружения в воду',
   'Девчонки, поехали кататься 😉',
   'Лучший десерт - полезный десерт. Всем отличного настроения и помните - "Вы - то что вы едите"',
-  'Клюквенный морс. Далекие воспоминаняи из детства. Жаль к бабушке в гости уже не съездить 😢',
+  'Клюквенный морс. Далекие воспоминания из детства. Жаль к бабушке в гости уже не съездить 😢',
   'Недалеко аэродром, встречать каждый самолет было классно в начале воздуха. Сейчас уже поднадоели',
   'Классный органайзер для обуви. Только сегодня по промо цене, 3000 Кексомарок! Налетай!',
   'Дорожка на пляж. Белый песочек, теплая вода... ммм... Завидуйте!',
@@ -32,7 +32,7 @@ const DESCRIPTIONS = [
   'Потрясающий закат. Как же тут хорошо!',
   'Маленький житель пляжа. Кстати, тарелка жаренных крабов всего-то 200 Кексорублей! Вкуснятина!',
   'Ну где же ручки, ну где же ваши ручки? Давай поднимем ручки и будем танцевать! 🎵💖',
-  'на первый взгляд на нас нападает инопланетянин. Вам кажется, это всего лишь гиппопотам *нервно смеется*'
+  'На первый взгляд на нас нападает инопланетянин. Вам кажется, это всего лишь гиппопотам *нервно смеется*'
 ];
 
 const LIKES_NUMBER = {
@@ -84,19 +84,27 @@ function getRandomInteger (min, max) {
 // Создание постов
 const postUsedId = [];
 
+const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
+
 const createPost = () => {
   const randomPostId = getRandomInteger(PHOTO_ID.min, PHOTO_ID.max);
   const randomPostLikesNumber = getRandomInteger(LIKES_NUMBER.min, LIKES_NUMBER.max - 1);
+  let photoDescription;
+  if (randomPostId <= DESCRIPTIONS.length) {
+    photoDescription = DESCRIPTIONS[randomPostId - 1];
+  } else {
+    photoDescription = 'Описание фотографии отсутствует';
+  }
 
 
   // Создаем комментарий
   const createComment = () => ({
     avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-    message: COMMENT_MESSAGES[getRandomInteger(0, COMMENT_MESSAGES.length - 1)],
-    name: USER_NAMES[getRandomInteger(0, USER_NAMES.length - 1)]
+    message: getRandomArrayElement(COMMENT_MESSAGES),
+    name: getRandomArrayElement(USER_NAMES)
   });
 
-  // Создаем массив комментариев
+  // Создаем массив комментариев, добавляем значение id для каждого комментария
   const commentsList = [];
   const commentsNumber = getRandomInteger(COMMENTS_NUMBER.min, COMMENTS_NUMBER.max);
   for (let i = 1; i <= commentsNumber; i++) {
@@ -113,7 +121,7 @@ const createPost = () => {
     return {
       id: randomPostId,
       url: `photos/${[randomPostId]}.jpg`,
-      description: DESCRIPTIONS[randomPostId - 1],
+      description: photoDescription,
       likes: randomPostLikesNumber,
       comments: commentsList
     };
@@ -122,12 +130,7 @@ const createPost = () => {
   }
 };
 
-
 // Создаем ленту Кекстограма из постов
-const kekstogramFeed = [];
-while (postUsedId.length < POSTS_NUMBER) {
-  const post = createPost();
-  kekstogramFeed.push(post);
-}
+const kekstogramFeed = Array.from({length: POSTS_NUMBER}, createPost);
 
-// console.log(kekstogramFeed);
+console.log(kekstogramFeed);
