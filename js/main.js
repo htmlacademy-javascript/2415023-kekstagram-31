@@ -88,15 +88,15 @@ const createPost = () => {
   const randomPostId = getRandomInteger(PHOTO_ID.min, PHOTO_ID.max);
   const randomPostLikesNumber = getRandomInteger(LIKES_NUMBER.min, LIKES_NUMBER.max - 1);
 
-  // Создаем комменты
 
+  // Создаем комментарий
   const createComment = () => ({
     avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
     message: COMMENT_MESSAGES[getRandomInteger(0, COMMENT_MESSAGES.length - 1)],
     name: USER_NAMES[getRandomInteger(0, USER_NAMES.length - 1)]
   });
 
-  // Создаем массив комментов
+  // Создаем массив комментариев
   const commentsList = [];
   const commentsNumber = getRandomInteger(COMMENTS_NUMBER.min, COMMENTS_NUMBER.max);
   for (let i = 1; i <= commentsNumber; i++) {
@@ -104,6 +104,7 @@ const createPost = () => {
     postComments.id = randomPostId.toString() + (i - 1).toString();
     commentsList.push(postComments);
   }
+
 
   // Создаем пост
   if (!postUsedId.includes(randomPostId)) {
