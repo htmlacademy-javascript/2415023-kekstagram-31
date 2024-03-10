@@ -52,7 +52,7 @@ const CommentsUserPicture = {
   MAX: 6
 };
 
-const UserNames = [
+const USER_NAMES = [
   'Максим',
   'Алина',
   'Павел',
@@ -106,7 +106,7 @@ const createPost = () => {
   const createComment = () => ({
     avatar: `img/avatar-${getRandomInteger(CommentsUserPicture.MIN, CommentsUserPicture.MAX)}.svg`,
     message: getRandomArrayElement(CommentMessages),
-    name: getRandomArrayElement(UserNames)
+    name: getRandomArrayElement(USER_NAMES)
   });
 
   // Создаем массив комментариев, добавляем значение id для каждого комментария
