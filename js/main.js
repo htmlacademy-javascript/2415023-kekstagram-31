@@ -91,6 +91,14 @@ const postUsedId = [];
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
+// Создаем комментарий
+const createComment = (id) => ({
+  id,
+  avatar: `img/avatar-${getRandomInteger(CommentsUserPicture.MIN, CommentsUserPicture.MAX)}.svg`,
+  message: getRandomArrayElement(CommentMessages),
+  name: getRandomArrayElement(USER_NAMES)
+});
+
 const createPost = () => {
   const randomPostId = getRandomInteger(PhotoId.MIN, PhotoId.MAX);
   const randomPostLikesNumber = getRandomInteger(LikesNumber.MIN, LikesNumber.MAX - 1);
@@ -101,22 +109,14 @@ const createPost = () => {
     photoDescription = 'Описание фотографии отсутствует';
   }
 
-
-  // Создаем комментарий
-  const createComment = () => ({
-    avatar: `img/avatar-${getRandomInteger(CommentsUserPicture.MIN, CommentsUserPicture.MAX)}.svg`,
-    message: getRandomArrayElement(CommentMessages),
-    name: getRandomArrayElement(USER_NAMES)
-  });
-
   // Создаем массив комментариев, добавляем значение id для каждого комментария
-  const commentsList = [];
+  // const commentsList = [];
   const commentsNumber = getRandomInteger(CommentsNumber.MIN, CommentsNumber.MAX);
-  for (let i = 1; i <= commentsNumber; i++) {
-    const postComments = createComment();
-    postComments.id = randomPostId.toString() + (i - 1).toString();
-    commentsList.push(postComments);
-  }
+  // for (let i = 1; i <= commentsNumber; i++) {
+  //   const postComments = createComment();
+  //   postComments.id = randomPostId.toString() + (i - 1).toString();
+  //   commentsList.push(postComments);
+  // }
 
 
   // Создаем пост
@@ -128,7 +128,7 @@ const createPost = () => {
       url: `photos/${[randomPostId]}.jpg`,
       description: photoDescription,
       likes: randomPostLikesNumber,
-      comments: commentsList
+      comments: Array.from({length: commentsNumber}, (_, index) => createComment(index + 1))
     };
   } else {
     return createPost();
