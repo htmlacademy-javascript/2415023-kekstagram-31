@@ -99,25 +99,18 @@ const createComment = (id) => ({
   name: getRandomArrayElement(USER_NAMES)
 });
 
+
 const createPost = () => {
   const randomPostId = getRandomInteger(PhotoId.MIN, PhotoId.MAX);
   const randomPostLikesNumber = getRandomInteger(LikesNumber.MIN, LikesNumber.MAX - 1);
+  const commentsNumber = getRandomInteger(CommentsNumber.MIN, CommentsNumber.MAX);
+
   let photoDescription;
   if (randomPostId <= DESCRIPTIONS.length) {
     photoDescription = DESCRIPTIONS[randomPostId - 1];
   } else {
     photoDescription = 'Описание фотографии отсутствует';
   }
-
-  // Создаем массив комментариев, добавляем значение id для каждого комментария
-  // const commentsList = [];
-  const commentsNumber = getRandomInteger(CommentsNumber.MIN, CommentsNumber.MAX);
-  // for (let i = 1; i <= commentsNumber; i++) {
-  //   const postComments = createComment();
-  //   postComments.id = randomPostId.toString() + (i - 1).toString();
-  //   commentsList.push(postComments);
-  // }
-
 
   // Создаем пост
   if (!postUsedId.includes(randomPostId)) {
@@ -128,7 +121,7 @@ const createPost = () => {
       url: `photos/${[randomPostId]}.jpg`,
       description: photoDescription,
       likes: randomPostLikesNumber,
-      comments: Array.from({length: commentsNumber}, (_, index) => createComment(index + 1))
+      comments: Array.from({length: commentsNumber}, (_, index) => createComment(randomPostId.toString() + (index).toString()))
     };
   } else {
     return createPost();
