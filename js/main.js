@@ -87,8 +87,6 @@ function getRandomInteger (min, max) {
 
 
 // Создание постов
-const postUsedId = [];
-
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 // Создаем комментарий
@@ -100,35 +98,27 @@ const createComment = (id) => ({
 });
 
 
-const createPost = () => {
-  const randomPostId = getRandomInteger(PhotoId.MIN, PhotoId.MAX);
+const createPost = (id) => {
   const randomPostLikesNumber = getRandomInteger(LikesNumber.MIN, LikesNumber.MAX - 1);
   const commentsNumber = getRandomInteger(CommentsNumber.MIN, CommentsNumber.MAX);
 
   let photoDescription;
-  if (randomPostId <= DESCRIPTIONS.length) {
-    photoDescription = DESCRIPTIONS[randomPostId - 1];
+  if (id <= DESCRIPTIONS.length) {
+    photoDescription = DESCRIPTIONS[id - 1];
   } else {
     photoDescription = 'Описание фотографии отсутствует';
   }
 
-  // Создаем пост
-  if (!postUsedId.includes(randomPostId)) {
-    postUsedId.push(randomPostId);
-
-    return {
-      id: randomPostId,
-      url: `photos/${[randomPostId]}.jpg`,
-      description: photoDescription,
-      likes: randomPostLikesNumber,
-      comments: Array.from({length: commentsNumber}, (_, index) => createComment(randomPostId.toString() + (index).toString()))
-    };
-  } else {
-    return createPost();
-  }
+  return {
+    id,
+    url: `photos/${id}.jpg`,
+    description: photoDescription,
+    likes: randomPostLikesNumber,
+    comments: Array.from({length: commentsNumber}, (_, index) => createComment(id.toString() + (index).toString()))
+  };
 };
 
 // Создаем ленту Кекстограма из постов
-const kekstogramFeed = Array.from({length: POSTS_NUMBER}, createPost);
+const kekstogramFeed = Array.from({length: POSTS_NUMBER}, (_, index) => createPost(index + 1));
 
 console.log(kekstogramFeed);
