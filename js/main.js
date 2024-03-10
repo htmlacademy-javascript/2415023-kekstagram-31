@@ -119,6 +119,6 @@ const createPost = (id) => {
 };
 
 // Создаем ленту Кекстограма из постов
-const kekstogramFeed = Array.from({length: POSTS_NUMBER}, (_, index) => createPost(index + 1));
-
-console.log(kekstogramFeed);
+Array.from({length: POSTS_NUMBER}, (_, index) => createPost(index + 1));
+// const kekstogramFeed = Array.from({length: POSTS_NUMBER}, (_, index) => createPost(index + 1));
+// console.log(kekstogramFeed);
