@@ -1,10 +1,10 @@
 // Объявляем переменные
 // Посты
-const POSTS_NUMBER = 30;
+const POSTS_NUMBER = 25;
 
-const PHOTO_ID = {
-  min: 1,
-  max: POSTS_NUMBER
+const PhotoId = {
+  MIN: 1,
+  MAX: POSTS_NUMBER
 };
 
 const DESCRIPTIONS = [
@@ -35,19 +35,24 @@ const DESCRIPTIONS = [
   'На первый взгляд на нас нападает инопланетянин. Вам кажется, это всего лишь гиппопотам *нервно смеется*'
 ];
 
-const LIKES_NUMBER = {
-  min: 15,
-  max: 200
+const LikesNumber = {
+  MIN: 15,
+  MAX: 200
 };
 
 
 // Комменты
-const COMMENTS_NUMBER = {
-  min: 0,
-  max: 30
+const CommentsNumber = {
+  MIN: 0,
+  MAX: 30
 };
 
-const USER_NAMES = [
+const CommentsUserPicture = {
+  MIN: 1,
+  MAX: 6
+};
+
+const UserNames = [
   'Максим',
   'Алина',
   'Павел',
@@ -60,7 +65,7 @@ const USER_NAMES = [
   'Ольга'
 ];
 
-const COMMENT_MESSAGES = [
+const CommentMessages = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -87,8 +92,8 @@ const postUsedId = [];
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 const createPost = () => {
-  const randomPostId = getRandomInteger(PHOTO_ID.min, PHOTO_ID.max);
-  const randomPostLikesNumber = getRandomInteger(LIKES_NUMBER.min, LIKES_NUMBER.max - 1);
+  const randomPostId = getRandomInteger(PhotoId.MIN, PhotoId.MAX);
+  const randomPostLikesNumber = getRandomInteger(LikesNumber.MIN, LikesNumber.MAX - 1);
   let photoDescription;
   if (randomPostId <= DESCRIPTIONS.length) {
     photoDescription = DESCRIPTIONS[randomPostId - 1];
@@ -99,14 +104,14 @@ const createPost = () => {
 
   // Создаем комментарий
   const createComment = () => ({
-    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-    message: getRandomArrayElement(COMMENT_MESSAGES),
-    name: getRandomArrayElement(USER_NAMES)
+    avatar: `img/avatar-${getRandomInteger(CommentsUserPicture.MIN, CommentsUserPicture.MAX)}.svg`,
+    message: getRandomArrayElement(CommentMessages),
+    name: getRandomArrayElement(UserNames)
   });
 
   // Создаем массив комментариев, добавляем значение id для каждого комментария
   const commentsList = [];
-  const commentsNumber = getRandomInteger(COMMENTS_NUMBER.min, COMMENTS_NUMBER.max);
+  const commentsNumber = getRandomInteger(CommentsNumber.MIN, CommentsNumber.MAX);
   for (let i = 1; i <= commentsNumber; i++) {
     const postComments = createComment();
     postComments.id = randomPostId.toString() + (i - 1).toString();
