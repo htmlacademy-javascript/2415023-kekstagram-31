@@ -76,7 +76,7 @@ const CommentMessages = [
 
 
 // Основная часть кода
-// Рандмайзер
+// рандмайзер
 function getRandomInteger (min, max) {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
@@ -85,11 +85,11 @@ function getRandomInteger (min, max) {
   return Math.floor(result);
 }
 
-
-// Создание постов
+// функция рандомного элемента
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-// Создаем комментарий
+
+// создаем комментарий
 const createComment = (id) => ({
   id,
   avatar: `img/avatar-${getRandomInteger(CommentsUserPicture.MIN, CommentsUserPicture.MAX)}.svg`,
@@ -97,7 +97,7 @@ const createComment = (id) => ({
   name: getRandomArrayElement(USER_NAMES)
 });
 
-
+// создаем пост
 const createPost = (id) => {
   const randomPostLikesNumber = getRandomInteger(LikesNumber.MIN, LikesNumber.MAX - 1);
   const commentsNumber = getRandomInteger(CommentsNumber.MIN, CommentsNumber.MAX);
