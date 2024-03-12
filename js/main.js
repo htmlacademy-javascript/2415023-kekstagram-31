@@ -2,11 +2,6 @@
 // Посты
 const POSTS_NUMBER = 25;
 
-// const PhotoId = {
-//   MIN: 1,
-//   MAX: POSTS_NUMBER
-// };
-
 const DESCRIPTIONS = [
   'Снимали дроном отель, смотрите какой у нас классный пляж',
   'Вход на пляж. Оригинальная работа',
