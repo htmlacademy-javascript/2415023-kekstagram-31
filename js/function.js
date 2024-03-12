@@ -37,3 +37,28 @@ function separatesNumbers(input) {
 }
 
 (separatesNumbers('агент 0097'));
+
+
+// время встречи
+function timeToMinutes(time) {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function calculatesTime (turnTo, turnOut, meetingStarts, meetingDuration) {
+  const turnToWork = timeToMinutes(turnTo);
+  const turnOutFromWork = timeToMinutes(turnOut);
+  const meetingStartingTime = timeToMinutes(meetingStarts);
+
+  if ((meetingStartingTime + meetingDuration) > turnOutFromWork || turnToWork > meetingStartingTime) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// console.log(calculatesTime('08:00', '17:30', '14:00', 90));
+// console.log(calculatesTime('8:0', '10:0', '8:0', 120));
+// console.log(calculatesTime('08:00', '14:30', '14:00', 90));
+// console.log(calculatesTime('14:00', '17:30', '08:0', 90));
+// console.log(calculatesTime('8:00', '17:30', '08:00', 900));
