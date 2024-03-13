@@ -1,5 +1,3 @@
-import {kekstogramFeed} from './data.js';
+import {getKekstogramFeed} from './data.js';
 
-console.log (
-  kekstogramFeed()
-);
+getKekstogramFeed();
