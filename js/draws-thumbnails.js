@@ -2,8 +2,7 @@ const thumbnailsContainer = document.querySelector('.pictures');
 const thumbnailTemplate = document.querySelector('#picture');
 
 const fragment = document.createDocumentFragment();
-
-const drawsThumbnails = (posts) => {
+const drowThumbnails = (posts) => {
   posts.forEach((post) => {
     const clonedThumbnail = thumbnailTemplate.content.cloneNode(true);
     const thumbnailImg = clonedThumbnail.querySelector('.picture__img');
@@ -20,8 +19,7 @@ const drawsThumbnails = (posts) => {
   });
 
   thumbnailsContainer.appendChild(fragment);
+
 };
 
-export {drawsThumbnails};
-
-// если это опубликуется то я поборола гит
+export {drowThumbnails};
