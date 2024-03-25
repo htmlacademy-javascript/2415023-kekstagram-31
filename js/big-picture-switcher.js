@@ -1,22 +1,17 @@
 
-// открывает - закрывает миниатюру - как это вынести в отдельный модуль?
 const bodyElement = document.body;
 
 // Получаем коллекцию всех созданных постов
 const thumbnails = document.querySelectorAll('.picture');
 const bigPicture = document.querySelector('.big-picture');
-
 // адрес
 const bigPictureImg = bigPicture.querySelector('.big-picture__img');
 const miniPictureImgs = document.querySelectorAll('.picture__img');
-
 // описание
 const bigPictureCaption = bigPicture.querySelector('.social__caption');
-
 // лайки
 const bigPictureLikes = bigPicture.querySelector('.likes-count');
 const miniPictureLikes = document.querySelectorAll('.picture__likes');
-
 // комменты
 const bigPictureComments = bigPicture.querySelector('.social__comment-shown-count');
 const bigPictureCommentsTotal = bigPicture.querySelector('.social__comment-total-count');

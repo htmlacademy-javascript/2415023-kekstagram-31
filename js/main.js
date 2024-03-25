@@ -1,5 +1,5 @@
 import {getKekstogramFeed} from './data.js';
-import {drawsThumbnails} from './draws-thumbnails.js';
+import {drowThumbnails} from './draws-thumbnails.js';
 
 const posts = getKekstogramFeed();
-drawsThumbnails(posts);
+drowThumbnails(posts);
