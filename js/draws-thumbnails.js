@@ -23,3 +23,5 @@ const drawsThumbnails = (posts) => {
 };
 
 export {drawsThumbnails};
+
+// если это опубликуется то я поборола гит

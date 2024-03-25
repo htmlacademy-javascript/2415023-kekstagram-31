@@ -1,4 +1,3 @@
-
 const bodyElement = document.body;
 
 // Получаем коллекцию всех созданных постов
