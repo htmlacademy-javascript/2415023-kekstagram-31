@@ -1,4 +1,5 @@
 import { getElement, addClass, removeClass, bodyElement } from './dom-utils.js';
+import { drawComments } from './draws-comments.js';
 
 const bigPicture = getElement('.big-picture');
 const bigPictureImg = getElement('.big-picture__img img');
@@ -16,28 +17,8 @@ const drawBigPicture = ({url, description, likes, comments}) => {
   bigPictureLikes.textContent = likes;
   bigPictureComments.textContent = comments.length;
   bigPictureCommentsTotal.textContent = comments.length;
+
+  drawComments(comments);
 };
 
-export {drawBigPicture};
-
-// пункт 4. прячем что надо спрятать
-// socialCommentCount.classList.add('hidden');
-// commentsLoader.classList.add('hidden');
-
-
-// thumbnails.forEach((thumbnail, i) => {
-//   thumbnail.addEventListener('click', () => {
-
-//     // меняем данные большой картинки на данные из миниатюры
-
-//     bodyElement.classList.add('modal-open');
-
-//     // открываем картинку
-//     bigPicture.classList.remove('hidden');
-
-//     // проверяем все в консоли
-//     console.log(bigPictureImg.src, miniPictureImgs[i].src);
-//   });
-// });
-
-// });
+export {drawBigPicture, bigPicture};

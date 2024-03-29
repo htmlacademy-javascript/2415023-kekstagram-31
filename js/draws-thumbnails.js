@@ -1,5 +1,5 @@
-import { getElement } from './dom-utils';
-import {drawBigPicture} from './draws-big-picture';
+import { getElement } from './dom-utils.js';
+import { drawBigPicture } from './draws-big-picture.js';
 
 const thumbnailsContainer = getElement('.pictures');
 const thumbnailTemplate = getElement('#picture').content.querySelector('.picture');

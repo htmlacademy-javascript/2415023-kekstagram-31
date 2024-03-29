@@ -1,9 +1,10 @@
-import { addClass, removeClass, bodyElement, getElement } from './dom-utils';
+import { addClass, removeClass, bodyElement, getElement } from './dom-utils.js';
+import { bigPicture } from './draws-big-picture.js';
 
-const socialCommentCount = getElement('.social__comment-count');
-const commentsLoader = getElement('.comments-loader');
+// const socialCommentCount = getElement('.social__comment-count');
+// const commentsLoader = getElement('.comments-loader');
 const closePictureButton = getElement('#picture-cancel');
-const bigPicture = getElement('.big-picture');
+
 
 const closeBigPicture = () => {
   addClass(bigPicture, 'hidden');
