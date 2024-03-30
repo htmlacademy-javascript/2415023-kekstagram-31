@@ -1,3 +1,4 @@
+import { DISPLAYED_COMMENTS } from './variables.js';
 import { getElement, addClass } from './dom-utils.js';
 
 const drawComments = (comments) => {
@@ -25,8 +26,7 @@ const drawComments = (comments) => {
     commentItem.appendChild(commentPicture);
     commentItem.appendChild(commentText);
 
-    // Если индекс больше или равен 5, то добавляем класс hidden
-    if (index >= 5) {
+    if (index >= DISPLAYED_COMMENTS) {
       addClass(commentItem, 'hidden');
     }
 

@@ -5,4 +5,5 @@ import { loadNextComments } from './loads-comments.js';
 
 const posts = getKekstogramFeed();
 drowThumbnails(posts);
-
+closeBigPicture();
+loadNextComments();

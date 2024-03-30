@@ -1,3 +1,4 @@
+import { DISPLAYED_COMMENTS } from './variables.js';
 import { getElement, addClass, removeClass, bodyElement } from './dom-utils.js';
 import { drawComments } from './draws-comments.js';
 
@@ -28,7 +29,7 @@ const drawBigPicture = ({url, description, likes, comments}) => {
   drawComments(comments);
   updateDisplayedCommentsCount();
 
-  if (comments.length < 5) {
+  if (comments.length < DISPLAYED_COMMENTS) {
     addClass(commentsLoader, 'hidden');
   } else {
     removeClass(commentsLoader, 'hidden');
