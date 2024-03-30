@@ -7,7 +7,7 @@ const drawComments = (comments) => {
   commentsList.innerHTML = '';
 
   // Создаем и добавляем элементы для каждого комментария
-  comments.forEach((comment) => {
+  comments.forEach((comment, index) => {
     const commentItem = document.createElement('li');
     addClass(commentItem, 'social__comment');
 
@@ -24,6 +24,11 @@ const drawComments = (comments) => {
 
     commentItem.appendChild(commentPicture);
     commentItem.appendChild(commentText);
+
+    // Если индекс больше или равен 5, то добавляем класс hidden
+    if (index >= 5) {
+      addClass(commentItem, 'hidden');
+    }
 
     commentsList.appendChild(commentItem);
   });

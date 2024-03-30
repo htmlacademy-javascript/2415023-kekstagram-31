@@ -1,14 +1,14 @@
 import { addClass, removeClass, bodyElement, getElement } from './dom-utils.js';
-import { bigPicture } from './draws-big-picture.js';
+import { bigPicture, commentsLoader } from './draws-big-picture.js';
 
-// const socialCommentCount = getElement('.social__comment-count');
-// const commentsLoader = getElement('.comments-loader');
 const closePictureButton = getElement('#picture-cancel');
 
 
 const closeBigPicture = () => {
   addClass(bigPicture, 'hidden');
   removeClass(bodyElement, 'modal-open');
+
+  removeClass(commentsLoader, 'hidden');
 };
 
 closePictureButton.addEventListener('click', closeBigPicture);

@@ -7,7 +7,15 @@ const bigPictureCaption = getElement('.social__caption');
 const bigPictureLikes = getElement('.likes-count');
 const bigPictureComments = getElement('.social__comment-shown-count');
 const bigPictureCommentsTotal = getElement('.social__comment-total-count');
+const commentsLoader = getElement('.comments-loader');
 
+// Функция для обновления числа отображаемых комментариев
+const updateDisplayedCommentsCount = () => {
+  const displayedCommentsCount = document.querySelectorAll('.social__comment:not(.hidden)').length;
+  bigPictureComments.textContent = displayedCommentsCount;
+};
+
+// Отрисовываем изображение
 const drawBigPicture = ({url, description, likes, comments}) => {
   removeClass(bigPicture, 'hidden');
   addClass(bodyElement, 'modal-open');
@@ -15,10 +23,16 @@ const drawBigPicture = ({url, description, likes, comments}) => {
   bigPictureImg.src = url;
   bigPictureCaption.textContent = description;
   bigPictureLikes.textContent = likes;
-  bigPictureComments.textContent = comments.length;
   bigPictureCommentsTotal.textContent = comments.length;
 
   drawComments(comments);
+  updateDisplayedCommentsCount();
+
+  if (comments.length < 5) {
+    addClass(commentsLoader, 'hidden');
+  } else {
+    removeClass(commentsLoader, 'hidden');
+  }
 };
 
-export {drawBigPicture, bigPicture};
+export { drawBigPicture, updateDisplayedCommentsCount, bigPicture, commentsLoader };
