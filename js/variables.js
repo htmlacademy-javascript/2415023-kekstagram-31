@@ -35,10 +35,13 @@ const LikesNumber = {
 
 
 // Комменты
+const DISPLAYED_COMMENTS = 5;
+
 const CommentsNumber = {
   MIN: 0,
   MAX: 30
 };
+
 
 const CommentsUserPicture = {
   MIN: 1,
@@ -67,4 +70,4 @@ const CommentMessages = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-export {POSTS_NUMBER, POSTS_DESCRIPTIONS, LikesNumber, CommentsNumber, CommentsUserPicture, USER_NAMES, CommentMessages};
+export { POSTS_NUMBER, POSTS_DESCRIPTIONS, LikesNumber, DISPLAYED_COMMENTS, CommentsNumber, CommentsUserPicture, USER_NAMES, CommentMessages };

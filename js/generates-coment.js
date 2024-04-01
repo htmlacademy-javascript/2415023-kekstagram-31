@@ -1,5 +1,5 @@
-import {getRandomInteger, getRandomArrayElement} from './randomizer.js';
-import {CommentsUserPicture, USER_NAMES, CommentMessages} from './variables.js';
+import { getRandomInteger, getRandomArrayElement } from './randomizer.js';
+import { CommentsUserPicture, USER_NAMES, CommentMessages } from './variables.js';
 
 // создаем комментарий
 const createComment = (id) => ({
@@ -9,4 +9,4 @@ const createComment = (id) => ({
   name: getRandomArrayElement(USER_NAMES)
 });
 
-export {createComment};
+export { createComment };

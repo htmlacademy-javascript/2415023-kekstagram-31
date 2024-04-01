@@ -1,65 +1,30 @@
+import { addClass, removeClass, bodyElement, getElement } from './dom-utils.js';
+import { bigPicture, commentsLoader } from './draws-big-picture.js';
 
-// открывает - закрывает миниатюру - как это вынести в отдельный модуль?
-const bodyElement = document.body;
+const closePictureButton = getElement('#picture-cancel');
 
-// Получаем коллекцию всех созданных постов
-const thumbnails = document.querySelectorAll('.picture');
-const bigPicture = document.querySelector('.big-picture');
 
-// адрес
-const bigPictureImg = bigPicture.querySelector('.big-picture__img');
-const miniPictureImgs = document.querySelectorAll('.picture__img');
+const closeBigPicture = () => {
+  addClass(bigPicture, 'hidden');
+  removeClass(bodyElement, 'modal-open');
 
-// описание
-const bigPictureCaption = bigPicture.querySelector('.social__caption');
+  removeClass(commentsLoader, 'hidden');
+  document.removeEventListener('keydown', onEscKeydown);
+};
 
-// лайки
-const bigPictureLikes = bigPicture.querySelector('.likes-count');
-const miniPictureLikes = document.querySelectorAll('.picture__likes');
+const openBigPicture = () => {
+  removeClass(bigPicture, 'hidden');
+  addClass(bodyElement, 'modal-open');
 
-// комменты
-const bigPictureComments = bigPicture.querySelector('.social__comment-shown-count');
-const bigPictureCommentsTotal = bigPicture.querySelector('.social__comment-total-count');
-const miniPictureComments = document.querySelectorAll('.picture__comments');
+  document.addEventListener('keydown', onEscKeydown);
+};
 
-// пункт 4. то что надо спрятать
-const socialCommentCount = document.querySelector('.social__comment-count');
-const commentsLoader = document.querySelector('.comments-loader');
-
-thumbnails.forEach((thumbnail, i) => {
-  thumbnail.addEventListener('click', () => {
-
-    // меняем данные большой картинки на данные из миниатюры
-    bigPictureImg.src = miniPictureImgs[i].src;
-    bigPictureCaption.textContent = miniPictureImgs[i].alt;
-    bigPictureLikes.textContent = miniPictureLikes[i].textContent;
-    bigPictureComments.textContent = '????'; // откуда брать это значение?
-    bigPictureCommentsTotal.textContent = miniPictureComments[i].textContent;
-
-    // пункт 4. прячем что надо спрятать
-    // socialCommentCount.classList.add('hidden');
-    commentsLoader.classList.add('hidden');
-
-    bodyElement.classList.add('modal-open');
-
-    // открываем картинку
-    bigPicture.classList.remove('hidden');
-
-    // проверяем все в консоли
-    console.log(bigPictureImg.src, miniPictureImgs[i].src);
-  });
-});
-
-// Закрываем фото по клику на крестик или клавише esc
-function closeBigPicture() {
-  bigPicture.classList.add('hidden');
-  bodyElement.classList.remove('modal-open');
-}
-
-document.getElementById('picture-cancel').addEventListener('click', closeBigPicture);
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
+function onEscKeydown (evt) {
+  if (evt.key === 'Escape') {
     closeBigPicture();
   }
-});
+}
+
+closePictureButton.addEventListener('click', closeBigPicture);
+
+export { openBigPicture, closeBigPicture};

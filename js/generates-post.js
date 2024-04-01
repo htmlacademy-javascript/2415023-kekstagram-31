@@ -1,9 +1,10 @@
-import {getRandomInteger} from './randomizer.js';
-import {POSTS_DESCRIPTIONS, LikesNumber, CommentsNumber} from './variables.js';
-import {createComment} from './generates-coment.js';
+import { POSTS_NUMBER, POSTS_DESCRIPTIONS, LikesNumber, CommentsNumber } from './variables.js';
+import { generateUniqueRandomId } from './generates-post-id.js';
+import { createComment } from './generates-coment.js';
+import { getRandomInteger } from './randomizer.js';
 
-// создаем пост
-const createPost = (id) => {
+const createPost = () => {
+  const id = generateUniqueRandomId(1, POSTS_NUMBER);
   const randomPostLikesNumber = getRandomInteger(LikesNumber.MIN, LikesNumber.MAX - 1);
   const commentsNumber = getRandomInteger(CommentsNumber.MIN, CommentsNumber.MAX);
 
@@ -19,8 +20,8 @@ const createPost = (id) => {
     url: `photos/${id}.jpg`,
     description: photoDescription,
     likes: randomPostLikesNumber,
-    comments: Array.from({length: commentsNumber}, (_, index) => createComment(id.toString() + (index).toString()))
+    comments: Array.from({ length: commentsNumber }, (_, index) => createComment(id.toString() + (index).toString()))
   };
 };
 
-export {createPost};
+export { createPost };
