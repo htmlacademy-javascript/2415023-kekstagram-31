@@ -1,5 +1,6 @@
 import { getElement } from './dom-utils.js';
 import { drawBigPicture } from './draws-big-picture.js';
+import { openBigPicture } from './big-picture-switcher.js';
 
 const thumbnailsContainer = getElement('.pictures');
 const thumbnailTemplate = getElement('#picture').content.querySelector('.picture');
@@ -20,6 +21,7 @@ const drowThumbnails = (posts) => {
 
     clonedThumbnail.addEventListener('click', () => {
       drawBigPicture(post);
+      openBigPicture();
     });
 
     fragment.appendChild(clonedThumbnail);

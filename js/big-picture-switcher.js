@@ -9,14 +9,22 @@ const closeBigPicture = () => {
   removeClass(bodyElement, 'modal-open');
 
   removeClass(commentsLoader, 'hidden');
+  document.removeEventListener('keydown', onEscKeydown);
 };
+
+const openBigPicture = () => {
+  removeClass(bigPicture, 'hidden');
+  addClass(bodyElement, 'modal-open');
+
+  document.addEventListener('keydown', onEscKeydown);
+};
+
+function onEscKeydown (evt) {
+  if (evt.key === 'Escape') {
+    closeBigPicture();
+  }
+}
 
 closePictureButton.addEventListener('click', closeBigPicture);
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    closeBigPicture();
-  }
-});
-
-export { closeBigPicture };
+export { openBigPicture, closeBigPicture};

@@ -1,6 +1,7 @@
 import { DISPLAYED_COMMENTS } from './variables.js';
-import { getElement, addClass, removeClass, bodyElement } from './dom-utils.js';
+import { getElement, addClass, removeClass } from './dom-utils.js';
 import { drawComments } from './draws-comments.js';
+// import { openBigPicture } from './big-picture-switcher.js';
 
 const bigPicture = getElement('.big-picture');
 const bigPictureImg = getElement('.big-picture__img img');
@@ -18,8 +19,6 @@ const updateDisplayedCommentsCount = () => {
 
 // Отрисовываем изображение
 const drawBigPicture = ({url, description, likes, comments}) => {
-  removeClass(bigPicture, 'hidden');
-  addClass(bodyElement, 'modal-open');
 
   bigPictureImg.src = url;
   bigPictureCaption.textContent = description;
