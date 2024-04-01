@@ -1,5 +1,5 @@
-import { DISPLAYED_COMMENTS } from './variables.js';
-import { getElement, addClass, removeClass } from './dom-utils.js';
+import { DISPLAYED_COMMENTS } from '../utils/post_variables.js';
+import { getElement, addClass, removeClass } from '../utils/dom-utils.js';
 import { updateDisplayedCommentsCount } from './draws-big-picture.js';
 
 const commentsLoader = getElement('.comments-loader');

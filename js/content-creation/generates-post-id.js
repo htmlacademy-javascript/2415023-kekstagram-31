@@ -1,4 +1,4 @@
-import { getRandomInteger } from './randomizer.js';
+import { getRandomInteger } from '../utils/randomizer.js';
 
 const usedIds = [];
 

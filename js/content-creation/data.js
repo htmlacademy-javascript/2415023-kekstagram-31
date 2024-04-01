@@ -1,4 +1,4 @@
-import { POSTS_NUMBER } from './variables.js';
+import { POSTS_NUMBER } from '../utils/post_variables.js';
 import { createPost } from './generates-post.js';
 
 // Создаем ленту Кекстограма из постов

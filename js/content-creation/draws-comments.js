@@ -1,5 +1,5 @@
-import { DISPLAYED_COMMENTS } from './variables.js';
-import { getElement, addClass } from './dom-utils.js';
+import { DISPLAYED_COMMENTS } from '../utils/post_variables.js';
+import { getElement, addClass } from '../utils/dom-utils.js';
 
 const drawComments = (comments) => {
   const commentsList = getElement('.social__comments');
