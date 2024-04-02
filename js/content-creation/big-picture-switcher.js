@@ -1,5 +1,5 @@
-import { isEscapeKey } from '../utils/utils.js';
-import { addClass, removeClass, bodyElement, getElement } from '../utils/dom-utils.js';
+import { bodyElement, isEscapeKey } from '../utils/utils.js';
+import { addClass, removeClass, getElement } from '../utils/dom-utils.js';
 import { bigPicture, commentsLoader } from './draws-big-picture.js';
 
 const closePictureButton = getElement('#picture-cancel');
