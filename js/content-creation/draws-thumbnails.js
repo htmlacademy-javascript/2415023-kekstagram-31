@@ -1,4 +1,4 @@
-import { getElement } from './dom-utils.js';
+import { getElement } from '../utils/dom-utils.js';
 import { drawBigPicture } from './draws-big-picture.js';
 import { openBigPicture } from './big-picture-switcher.js';
 

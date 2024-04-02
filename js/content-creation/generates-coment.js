@@ -1,5 +1,5 @@
-import { getRandomInteger, getRandomArrayElement } from './randomizer.js';
-import { CommentsUserPicture, USER_NAMES, CommentMessages } from './variables.js';
+import { getRandomInteger, getRandomArrayElement } from '../utils/randomizer.js';
+import { CommentsUserPicture, USER_NAMES, CommentMessages } from '../utils/post_variables.js';
 
 // создаем комментарий
 const createComment = (id) => ({
